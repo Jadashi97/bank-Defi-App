@@ -9,5 +9,23 @@ actor DBANK {
   // Debug.print("hello Dunia")
   // Debug.print(debug_show (currentValue));
 
-  Debug.print(debug_show (id)); // prints out the immuntable set varible
+  // Debug.print(debug_show (id)); // prints out the immuntable set varible
+
+  ///////FUNCTIONS
+  // a function to increment using Candid
+  public func topUp(amount : Nat) {
+    currentValue += amount;
+
+    Debug.print(debug_show (currentValue));
+  };
+
+  // a function to decrement using Candid
+
+  public func withDraw(amount : Nat) {
+    currentValue -= amount;
+
+    Debug.print(debug_show (currentValue));
+  };
+
+  // topUp();
 };
