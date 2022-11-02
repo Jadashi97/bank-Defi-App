@@ -1,10 +1,12 @@
 import Debug "mo:base/Debug" //this imports the Debug module from motoko library
 
 actor DBANK {
-  var currentValue = 300; //create variable
-  currentValue := 100; //change variable
+  // by adding the word stable infront of a var makes it othorgonally persistent(maintains the state of the variable)
+  stable var currentValue = 300; //create variable
 
-  let id = 245345435636; //to set immutable variables
+  // currentValue := 100; //change variable
+
+  // let id = 245345435636; //to set immutable variables
 
   // Debug.print("hello Dunia")
   // Debug.print(debug_show (currentValue));
@@ -22,9 +24,20 @@ actor DBANK {
   // a function to decrement using Candid
 
   public func withDraw(amount : Nat) {
-    currentValue -= amount;
 
-    Debug.print(debug_show (currentValue));
+    let tempValue : Int = currentValue - amount; //Int, include that so that it does not throw an error
+
+    if (tempValue >= 0) {
+      currentValue -= amount;
+      Debug.print(debug_show (currentValue));
+    } else {
+      Debug.print("this number cannot compute");
+    };
+  };
+
+  // this only reads the amount balance, it does this asynchronously without waiting for the rest of the page
+  public query func checkBalance() : async Nat {
+    return currentValue;
   };
 
   // topUp();
