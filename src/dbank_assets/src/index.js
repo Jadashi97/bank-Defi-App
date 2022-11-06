@@ -4,5 +4,5 @@ window.addEventListener("load", async function(){
     // console.log("Finished Loading....");
 
     const currentAmount = await dbank.checkBalance();
-    document.getElementById("value").innerHTML= currentAmount;
+    document.getElementById("value").innerHTML= currentAmount.toFixed(2);
 });
