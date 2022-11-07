@@ -5,7 +5,8 @@ import Float "mo:base/Float";
 actor DBANK {
   // by adding the word stable infront of a var makes it othorgonally persistent(maintains the state of the variable)
   stable var currentValue : Float = 300; //create variable
-  // currentValue := 100; //change variable
+  currentValue := 100; //change variable
+  Debug.print(debug_show (currentValue));
 
   stable var startTime = Time.now();
   // startTime := Time.now();
@@ -13,7 +14,6 @@ actor DBANK {
 
   // let id = 245345435636; //to set immutable variables
   // Debug.print("hello Dunia")
-  // Debug.print(debug_show (currentValue));
   // Debug.print(debug_show (id)); // prints out the immuntable set varible
 
   ///////FUNCTIONS
